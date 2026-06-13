@@ -30,15 +30,3 @@ data/processed/*
 # Trained models and large artifacts
 models/*
 !models/.gitkeep
-
-# Existing MRP working materials kept out of the public repo
-/0TODO.txt
-/Outline.txt
-/Outline Details.txt
-/1-Deliverable 1/
-/2-Deliverable 2/
-/Dataset/
-/Forms/
-/Guideline/
-/Research Course Slides/
-/Samples/
