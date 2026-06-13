@@ -25,3 +25,6 @@ data/processed/*
 
 models/*
 !models/.gitkeep
+
+lightning_logs/
+*.ckpt

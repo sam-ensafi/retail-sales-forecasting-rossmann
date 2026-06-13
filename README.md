@@ -5,11 +5,12 @@ drug stores using historical sales, store, and promotion data.
 
 ## Project structure
 
-- `notebooks/` exploratory and analysis notebooks
-- `src/` reusable Python code (data prep, features, models)
+- `notebooks/` exploratory data analysis
+- `src/` reusable Python code (preprocessing, features, models, evaluation)
 - `data/` raw and processed data (not tracked in git)
 - `models/` saved model artifacts (not tracked in git)
-- `reports/figures/` generated figures and outputs
+- `reports/figures/` generated figures
+- `results/` metrics and model comparison tables
 
 ## Setup
 
