@@ -2,6 +2,7 @@ pandas
 numpy
 scikit-learn
 lightgbm
+neuralforecast
 scipy
 matplotlib
 seaborn
