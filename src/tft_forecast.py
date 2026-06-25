@@ -46,3 +46,33 @@ runtime_min = (time.time()- t)/60
 n_params = sum(p.numel() for p in nf.models[0].parameters())
 #print("cv done in", round(runtime_min,1), "min")
 print("cv done in", round(runtime_min,1), "min, params", n_params)
+
+cv = cv.merge(df[["Store","Date","Open"]].rename(columns={"Store" : "unique_id", "Date" : 'ds'}), on=["unique_id",'ds'],how="left")
+out = cv.rename(columns={"unique_id" : "Store", 'ds': "Date", 'y' : "Sales"})[["Store","Date","Sales", "TFT","Open"]]
+out.to_csv(OUT/"tft_cv.csv", index= False)
+
+#rmse mae and rmspe
+def m(y, p):#rmspe only counts rows that real sales>0
+    y =np.asarray(y, float)
+    #y =np.asarray(y)
+    #p =np.asarray(p)
+    p =np.asarray(p, float)
+    mask = y>0
+    rmse = np.sqrt(np.mean((y-p) **2))
+    mae = np.mean(np.abs(y-p))
+    rmspe=np.sqrt(np.mean(((y[mask] - p[mask])/y[mask]) **2))
+    return(rmse,mae,rmspe)
+
+op = out[out.Open==1]# only score open days only because closed days are always 0
+june = op[(op.Date >='2015-06-01')&(op.Date <='2015-06-30')]
+july = op[(op.Date >='2015-07-01')&(op.Date <='2015-07-31')]
+jr = m(july.Sales, july.TFT)
+jv = m(june.Sales, june.TFT)
+#print(jr)
+print("val june RMSE", round(jv[0],1), "MAE", round(jv[1],1), "RMSPE", round(jv[2],3))
+print("test july RMSE", round(jr[0],1), "MAE", round(jr[1],1), "RMSPE", round(jr[2],3))
+# small file for notebook showing how long tft took and its size
+info = pd.DataFrame([{"train_min" : round(runtime_min,1), 'n_params':int(n_params), "test_rmse": round(jr[0],1)}])
+#info = pd.DataFrame([{"train_min" : (runtime_min,1), 'n_params':n_params, "test_rmse": round(jr[0],1)}])
+info.to_csv(OUT/"tft_info.csv", index= False)
+print('saved', OUT/"tft_cv.csv", "and tft_info.csv")
