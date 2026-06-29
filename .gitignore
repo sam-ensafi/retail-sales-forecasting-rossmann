@@ -28,3 +28,7 @@ models/*
 
 lightning_logs/
 *.ckpt
+*.log
+
+results/predictions_test.csv
+results/tft_cv.csv
