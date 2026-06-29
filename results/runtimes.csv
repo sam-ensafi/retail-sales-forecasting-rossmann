@@ -1,0 +1,5 @@
+model,train_seconds,complexity
+Seasonal Naive,0.0,"no training, just last weeks value"
+Ridge,0.2,23 coefficients
+LightGBM,4.8,525 trees
+TFT,1416.0,2344278 parameters

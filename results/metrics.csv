@@ -1,0 +1,15 @@
+model,features,split,RMSE,MAE,RMSPE
+Seasonal Naive,lag7,val,3751.0,2756.5,0.476
+Seasonal Naive,lag7,test,2595.9,2048.0,0.384
+Ridge,basic,val,2801.0,1989.5,0.437
+Ridge,basic,test,2575.6,1892.5,0.449
+Ridge,engineered,val,1390.7,982.5,0.193
+Ridge,engineered,test,1095.9,813.4,0.19
+LightGBM,basic,val,1696.3,1153.6,0.243
+LightGBM,basic,test,1559.9,1088.3,0.24
+LightGBM,engineered,val,917.1,633.8,0.126
+LightGBM,engineered,test,846.9,598.9,0.124
+LightGBM,eng+extra,val,938.9,639.5,0.125
+LightGBM,eng+extra,test,849.6,597.1,0.124
+TFT,deep,val,837.2,569.6,0.115
+TFT,deep,test,877.9,616.2,0.127
